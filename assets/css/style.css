@@ -1,0 +1,48 @@
+#header {
+    text-align: center;
+    padding: 15px;
+    color: purple;
+    background-color: rgb(106, 172, 235);
+    border-radius: 10px;
+    border: solid 3pt purple;
+    font-size: 60pt;
+}
+
+#currentTrain {
+    border: solid 2pt purple;
+    padding: 10pt;
+    border-radius: 10px;
+    color: purple;
+}
+
+.table {
+    color: purple;
+}
+
+#addTrainTxt {
+    border: solid 2pt purple;
+    padding: 10pt;
+    border-radius: 10px;
+    color: purple;
+
+}
+
+h3 {
+    border: solid 2pt purple;
+    padding: 2pt;
+    border-radius: 10px;
+    text-align: center;
+    background-color: rgb(106, 172, 235);
+}
+
+.button {
+    background-color: rgb(106, 172, 235);
+    border-radius: 10px;
+    padding: 5px;
+    width: 90px;
+    color: purple;
+}
+
+.button:hover {
+    color: white;
+}
