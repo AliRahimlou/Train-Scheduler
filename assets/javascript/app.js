@@ -39,18 +39,18 @@ $("#addTrain").on("click", function () {
     $("form")[0].reset();
 });
 
-database.ref().on("child_added", function (childSnapshot) {
+database.ref().on("child_added", function (snap) {
     var minAway;
-    var trainNew = moment(childSnapshot.val().train, "hh:mm").subtract(1, "years");
+    var trainNew = moment(snap.val().train, "hh:mm").subtract(1, "years");
     var timeDiff = moment().diff(moment(trainNew), "minutes");
-    var remainder = timeDiff % childSnapshot.val().frequency;
-    var minAway = childSnapshot.val().frequency - remainder;
+    var remainder = timeDiff % snap.val().frequency;
+    var minAway = snap.val().frequency - remainder;
     var nextTrain = moment().add(minAway, "minutes");
     nextTrain = moment(nextTrain).format("hh:mm");
 
-    $("#add-row").append("<tr><td>" + childSnapshot.val().name +
-        "</td><td>" + childSnapshot.val().destination +
-        "</td><td>" + childSnapshot.val().frequency +
+    $("#add-row").append("<tr><td>" + snap.val().name +
+        "</td><td>" + snap.val().destination +
+        "</td><td>" + snap.val().frequency +
         "</td><td>" + nextTrain +
         "</td><td>" + minAway + "</td></tr>");
 
