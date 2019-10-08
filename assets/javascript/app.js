@@ -38,17 +38,33 @@ $("#addTrain").on("click", function () {
         train: train,
         frequency: frequency,
         dateAdded: firebase.database.ServerValue.TIMESTAMP
-    });
+    })
+
     $("form")[0].reset();
 });
 
-$("#removeTrain").on("click", function () {
-    event.preventDefault();
-    database.ref().remove()
+// $("#removeTrain").on("click", function () {
+//     event.preventDefault();
 
-    location.reload();
+//     var id = $(this).data("id");
 
+//     database.ref().child(id).remove()
+
+//     location.reload();
+
+// });
+
+$(document).on("click","button",function () {
+    var id = $(this).data("id");
+    console.log(id);
+    database.ref().child(id).remove();
+
+
+    $("#" + id).remove();
+
+   
 });
+
 
 
 
@@ -61,12 +77,20 @@ database.ref().on("child_added", function (snap) {
     var minAway = snap.val().frequency - remainder;
     var nextTrain = moment().add(minAway, "minutes");
     nextTrain = moment(nextTrain).format("hh:mm");
+    var key = snap.key
 
-    $("#add-row").append("<tr><td>" + snap.val().name +
-        "</td><td>" + snap.val().destination +
-        "</td><td>" + snap.val().frequency +
-        "</td><td>" + nextTrain +
-        "</td><td>" + minAway + "</td></tr>");
+    
+
+    $("#add-row").append(`
+    <tr id="${key}">
+        <td>${snap.val().name}</td>
+        <td>${snap.val().destination}</td>
+        <td>${snap.val().frequency}</td>
+        <td>${nextTrain}</td>
+        <td>${minAway}</td>
+        <td><button class="button" data-id="${key}">Delete</button</td>
+    </tr>
+    `);
 
 
 

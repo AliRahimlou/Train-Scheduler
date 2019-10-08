@@ -35,7 +35,7 @@ h3 {
     background-color: rgb(106, 172, 235);
 }
 
-.button {
+.button,id {
     background-color: rgb(106, 172, 235);
     border-radius: 10px;
     padding: 5px;
