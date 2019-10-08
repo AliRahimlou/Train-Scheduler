@@ -42,6 +42,15 @@ $("#addTrain").on("click", function () {
     $("form")[0].reset();
 });
 
+$("#removeTrain").on("click", function () {
+    event.preventDefault();
+database.ref().remove()
+  
+    $("form")[0].reset();
+});
+
+
+
 
 database.ref().on("child_added", function (snap) {
     var minAway;
@@ -60,7 +69,7 @@ database.ref().on("child_added", function (snap) {
 
       
 
-       
+        
 
 
 }, function (errorObject) {
