@@ -44,9 +44,10 @@ $("#addTrain").on("click", function () {
 
 $("#removeTrain").on("click", function () {
     event.preventDefault();
-database.ref().remove()
-  
-    $("form")[0].reset();
+    database.ref().remove()
+
+    location.reload();
+
 });
 
 
@@ -67,12 +68,11 @@ database.ref().on("child_added", function (snap) {
         "</td><td>" + nextTrain +
         "</td><td>" + minAway + "</td></tr>");
 
-      
 
-        
+
+
 
 
 }, function (errorObject) {
     console.log("Errors handled: " + errorObject.code);
 });
-
