@@ -20,6 +20,9 @@ var destination;
 var train;
 var frequency = 0;
 
+
+
+
 $("#addTrain").on("click", function () {
     event.preventDefault();
 
@@ -39,6 +42,7 @@ $("#addTrain").on("click", function () {
     $("form")[0].reset();
 });
 
+
 database.ref().on("child_added", function (snap) {
     var minAway;
     var trainNew = moment(snap.val().train, "hh:mm").subtract(1, "years");
@@ -53,6 +57,10 @@ database.ref().on("child_added", function (snap) {
         "</td><td>" + snap.val().frequency +
         "</td><td>" + nextTrain +
         "</td><td>" + minAway + "</td></tr>");
+
+      
+
+       
 
 
 }, function (errorObject) {
